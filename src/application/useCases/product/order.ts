@@ -1,10 +1,12 @@
-import { IProductRepository } from "@domain/repositories";
+import { Cart, Order, User } from "@/domain/entities";
 
 export class OrderProduct {
-    constructor(private productRepository: IProductRepository){
+    constructor(){
 
     }
-    handle(user: any, cart: any){
-        
+    handle(cart: Cart, user: User){
+        const order = new Order(cart,user.id);
+
+        return order
     }
 }
