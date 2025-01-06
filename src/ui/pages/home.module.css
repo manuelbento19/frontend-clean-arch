@@ -1,0 +1,49 @@
+.products{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+
+    article{
+        border: 1px solid #e2e2e2;
+        box-shadow: 1px 3px 4px rgb(0 0 0 /15%);
+        border-radius: .4rem;
+        padding: 1em 2em;
+
+        display: flex;
+        flex-direction: column;
+
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h1{
+                font-size: 1.2em;
+                color: #202020;
+                font-weight: 400;
+            }
+            h2{
+                font-size: 1.6em;
+                font-weight: 500;
+            }
+        }
+
+        p{
+            font-size: .8rem;
+            color: #525252;
+        }
+
+        button{
+            padding: .6rem 0;
+            border: none;
+            border-radius: .2em;
+            background-color: #000;
+            color: #fff;
+            font-size: .9rem;
+
+            &:hover{
+                background-color: #353535;
+            }
+        }
+    }
+}
