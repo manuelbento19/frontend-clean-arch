@@ -1,7 +1,7 @@
 import { Product } from "@/domain/entities";
 import { ICartRepository } from "@/domain/repositories/ICartRepository";
 
-export class AddToCart {
+export class AddToCartCase {
     constructor(private cartRepository: ICartRepository){ }
 
     execute(product: Product){
