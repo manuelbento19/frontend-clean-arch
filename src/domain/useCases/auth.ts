@@ -1,11 +1,11 @@
-import { IAuthService } from "@/application/services/IAuthService";
-import { IStorageService } from "@/application/services/IStorageService";
-import { INotificationService } from "../services/INotificationService";
+import { IAuthService } from "@/domain/interfaces/IAuthService";
+import { INotificationService } from "../interfaces/INotificationService";
+import { IUserStorageService } from "../interfaces/IUserStorageService";
 
 export class AuthCase{
     constructor(
         private authService: IAuthService,
-        private storageService: IStorageService,
+        private useStorageService: IUserStorageService,
         private notificationService: INotificationService
     ){}
 
@@ -14,12 +14,12 @@ export class AuthCase{
         if(!user)
         return this.notificationService.notify("E-mail or password incorrect");
         
-        this.storageService.save(user);
+        this.useStorageService.save(user);
         return user;
     }
 
     async logout(){
         await this.authService.logout();
-        this.storageService.clear();
+        this.useStorageService.clear();
     }
 }
