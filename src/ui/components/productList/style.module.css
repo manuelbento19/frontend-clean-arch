@@ -19,6 +19,7 @@
     }
 
     article{
+        background: #fff;
         border: 1px solid #e2e2e2;
         box-shadow: 1px 3px 4px rgb(0 0 0 /15%);
         border-radius: .4rem;

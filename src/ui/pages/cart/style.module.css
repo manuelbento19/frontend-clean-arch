@@ -1,0 +1,23 @@
+.main{
+    h1{
+        font-size: 1.4em;
+        font-weight: 500;
+    }
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0, 1fr));
+    gap: 1rem;
+}
+.box{
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    box-shadow: 1px 3px 4px rgb(0 0 0 /15%);
+    border-radius: .4rem;
+    padding: 1em 2em;
+}
+
+.box:nth-child(2){
+    grid-column: 2 / 2;
+}

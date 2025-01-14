@@ -7,7 +7,10 @@ export function Header() {
         <Link to={"/"} className='logo'>
           <h1>ProStore</h1>
         </Link>
-        <Link to="/login">Login</Link>
+        <nav>
+          <Link to="/cart">Cart (5)</Link>
+          <Link to="/login">Login</Link>
+        </nav>
     </header>
   )
 }
