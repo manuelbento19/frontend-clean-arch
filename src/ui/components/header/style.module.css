@@ -1,0 +1,16 @@
+.header{
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    border: 0 solid #eee;
+    border-bottom-width: 1px;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a:first-child{
+        text-decoration: none;
+        color: #333;
+    }
+}

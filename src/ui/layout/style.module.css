@@ -1,0 +1,8 @@
+.layout{
+    display: flex;
+    flex-direction: column;
+
+    & > section {
+        padding: 2rem;
+    }
+}

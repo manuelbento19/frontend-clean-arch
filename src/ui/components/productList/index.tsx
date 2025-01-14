@@ -1,4 +1,4 @@
-import styles from './productList.module.css'
+import styles from './style.module.css'
 
 export function ProductList() {
   return (
