@@ -1,18 +1,25 @@
-import { IAuthService } from "@/domain/services/IAuthService";
+import { IAuthService } from "@/application/services/IAuthService";
+import { IStorageService } from "@/application/services/IStorageService";
+import { INotificationService } from "../services/INotificationService";
 
-export class AuthenticateCase{
-    constructor(private authService: IAuthService){}
+export class AuthCase{
+    constructor(
+        private authService: IAuthService,
+        private storageService: IStorageService,
+        private notificationService: INotificationService
+    ){}
 
-    async execute(email: string, password: string){
+    async login(email: string, password: string){
         const user = await this.authService.login(email,password);
+        if(!user)
+        return this.notificationService.notify("E-mail or password incorrect");
+        
+        this.storageService.save(user);
         return user;
     }
-}
 
-export class LogoutCase{
-    constructor(private authService: IAuthService){}
-
-    async execute(){
+    async logout(){
         await this.authService.logout();
+        this.storageService.clear();
     }
 }
