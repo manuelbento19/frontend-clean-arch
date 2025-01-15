@@ -1,3 +1,4 @@
+import { products } from '../../constants';
 import style from './style.module.css';
 
 export default function CartPage() {
@@ -9,37 +10,40 @@ export default function CartPage() {
                 <table>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
                             <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                Name
-                            </td>
-                            <td>$19.99</td>
-                        </tr>
+                        {products.slice(0,4).map((item,index)=>(
+                            <tr key={item.id}>
+                                <td>{index + 1}</td>
+                                <td>{item.name}</td>
+                                <td>${item.price}</td>
+                            </tr>
+                        ))}
+                        
                     </tbody>
                 </table>
             </div>
             <div className={style.box}>
                 <h2>Summary</h2>
-                <div >
-                    <span>Subtotal</span>
+                <div>
+                    <strong>Subtotal</strong>
                     <span>$19.99</span>
                 </div>
-                <div >
-                    <span>Taxes</span>
+                <div>
+                    <strong>Taxes</strong>
                     <span>$1.99</span>
                 </div>
-                <div >
-                    <span>Shipping</span>
+                <div>
+                    <strong>Shipping</strong>
                     <span>$0.00</span>
                 </div>
                 <hr/>
                 <div>
-                    <span>Total</span>
+                    <strong>Total</strong>
                     <span>$21.98</span>
                 </div>
                 <button>Checkout</button>
