@@ -81,6 +81,17 @@
     hr{
         margin: 1rem 0;
     }
+    
+    textarea{
+        width: 100%;
+        flex: 1;
+        height: 4rem;
+        border: 1px solid #ccc;
+        min-height: 80px;
+        max-height: 140px;
+        outline: none;
+        padding: .5rem;
+    }
 
     button{
         width: 100%;
