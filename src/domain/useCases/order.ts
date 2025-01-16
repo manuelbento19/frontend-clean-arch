@@ -1,14 +1,14 @@
 import { Cart, Order, User } from "@/domain/entities";
 import { IPaymentService } from "../interfaces/IPaymentService";
 import { INotificationService } from "../interfaces/INotificationService";
-import { IOrderStorageService } from "../interfaces/IOrderStorageService";
 import { ICartStorageService } from "../interfaces/ICartStorageService";
+import { IOrderStorageService } from "../interfaces/IOrderStorageService";
 
 export class OrderCase{
     constructor(
+        private orderStorageService: IOrderStorageService,
         private paymentService: IPaymentService,
         private notificationService: INotificationService,
-        private orderStorage: IOrderStorageService,
         private cartStorage: ICartStorageService,
     ){}
 
@@ -18,7 +18,17 @@ export class OrderCase{
         if (!paid)
         return this.notificationService.notify("Error while trying to pay");
         
-        this.orderStorage.save(order);
+        this.orderStorageService.save(order);
         this.cartStorage.clear()
+    }
+}
+
+export class GetAllOrderCase{
+    constructor(
+        private orderStorageService: IOrderStorageService,
+    ){}
+
+    async execute(){
+        return this.orderStorageService.get();
     }
 }

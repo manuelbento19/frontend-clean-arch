@@ -1,4 +1,4 @@
 export interface IStore<T>{
-    setState: (data: T) => void;
-    state: T | null;
+    setState: (data: T | null) => void;
+    state: T;
 }

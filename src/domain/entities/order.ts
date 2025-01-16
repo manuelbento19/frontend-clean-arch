@@ -17,6 +17,6 @@ export class Order {
         this.cart = cart;
         this.user_id = user_id;
         this.created_at = new Date();
-        this.total = cart.products.length
+        this.total = cart.products.reduce((prev,current) => prev + current.price, 0)
     }
 }

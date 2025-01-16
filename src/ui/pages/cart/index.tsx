@@ -2,15 +2,26 @@ import { useCart } from '@/ui/hooks/cart';
 import style from './style.module.css';
 import { Navigate } from 'react-router-dom';
 import { useUser } from '@/ui/hooks/user';
+import { FormEvent } from 'react';
+import { useOrders } from '@/ui/hooks/order';
 
 export default function CartPage() {
     const {user} = useUser();
     const {cart} = useCart(); 
+    const {orders,order} = useOrders(); 
 
     if(!user)
     return <Navigate to={"/login"}/>;
 
     const totalPrice = cart?.products.reduce((prev,current)=>prev + current.price,0) ?? 0
+
+    const onSubmit = async(e: FormEvent) => {
+        e.preventDefault();
+
+        //const address = (e.target as HTMLFormElement).address.value.trim();
+        if(cart && user)
+        await order.execute(cart,user)
+    } 
 
     return (
     <main className={style.main}>
@@ -38,7 +49,7 @@ export default function CartPage() {
                         </tbody>
                     </table>
                 </div>
-                <form className={style.box}>
+                <form onSubmit={onSubmit} className={style.box}>
                     <h2>Summary</h2>
                     <div>
                         <strong>Subtotal</strong>
@@ -65,7 +76,7 @@ export default function CartPage() {
             </div>
         </section>
         <section>
-            <h1>Orders (2)</h1>
+            <h1>Orders ({orders.length ?? 0})</h1>
             <div className={style.box}>
                 <table>
                     <thead>
@@ -76,11 +87,11 @@ export default function CartPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {cart?.products.slice(0,4).map((item,index)=>(
-                            <tr key={item.id}>
+                        {orders?.map((item,index)=>(
+                            <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>Order {index + 1}</td>
-                                <td>${item.price}</td>
+                                <td>{item.created_at && new Date(item.created_at).toISOString()}</td>
+                                <td>${item.total}</td>
                             </tr>
                         ))}
                     </tbody>
