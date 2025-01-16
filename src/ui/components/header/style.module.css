@@ -18,14 +18,14 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-
-        a:last-child{
-            background-color: black;
-            color: #fff;
-            padding: .3rem .5rem;
-            border-radius: .3rem;
-            display: flex;
-            justify-content: center;
-        }
     }
+}
+
+.button{
+    background-color: black;
+    color: #fff !important;
+    padding: .3rem .5rem;
+    border-radius: .3rem;
+    display: flex;
+    justify-content: center;
 }
