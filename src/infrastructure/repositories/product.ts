@@ -6,7 +6,7 @@ import { genArray } from "../utils";
 export class ProductRepository implements IProductRepository{
     getAll(): Promise<Product[]>{
         const products: Product[] = genArray(18).map(item=>{
-            const id = item.toString();
+            const id = (item + 1).toString();
             return {
                 id,
                 name: `Product ${id}`,

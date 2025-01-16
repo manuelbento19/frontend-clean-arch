@@ -1,11 +1,21 @@
-import { products } from '../../constants';
+import { useCart } from '@/ui/hooks/cart';
 import style from './style.module.css';
+import { Navigate } from 'react-router-dom';
+import { useUser } from '@/ui/hooks/user';
 
 export default function CartPage() {
-  return (
+    const {user} = useUser();
+    const {cart} = useCart(); 
+
+    if(!user)
+    return <Navigate to={"/login"}/>;
+
+    const totalPrice = cart?.products.reduce((prev,current)=>prev + current.price,0) ?? 0
+
+    return (
     <main className={style.main}>
         <section>
-            <h1>Cart (5)</h1>
+            <h1>Cart ({cart?.products.length ?? 0})</h1>
             <div className={style.grid}>
                 <div className={style.box}>
                     <table>
@@ -17,7 +27,7 @@ export default function CartPage() {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.slice(0,4).map((item,index)=>(
+                            {cart?.products.map((item,index)=>(
                                 <tr key={item.id}>
                                     <td>{index + 1}</td>
                                     <td>{item.name}</td>
@@ -32,11 +42,11 @@ export default function CartPage() {
                     <h2>Summary</h2>
                     <div>
                         <strong>Subtotal</strong>
-                        <span>$19.99</span>
+                        <span>${totalPrice}</span>
                     </div>
                     <div>
                         <strong>Taxes</strong>
-                        <span>$1.99</span>
+                        <span>$0.00</span>
                     </div>
                     <div>
                         <strong>Shipping</strong>
@@ -45,10 +55,10 @@ export default function CartPage() {
                     <hr/>
                     <div>
                         <strong>Total</strong>
-                        <span>$21.98</span>
+                        <span>${totalPrice}</span>
                     </div>
                     <div>
-                        <textarea name="" id="" placeholder='Address'></textarea>
+                        <textarea name="address" id="" placeholder='Address'></textarea>
                     </div>
                     <button>Checkout</button>
                 </form>
@@ -66,14 +76,13 @@ export default function CartPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.slice(0,4).map((item,index)=>(
+                        {cart?.products.slice(0,4).map((item,index)=>(
                             <tr key={item.id}>
                                 <td>{index + 1}</td>
                                 <td>Order {index + 1}</td>
                                 <td>${item.price}</td>
                             </tr>
                         ))}
-                        
                     </tbody>
                 </table>
             </div>

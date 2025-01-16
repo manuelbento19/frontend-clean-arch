@@ -1,4 +1,4 @@
-import { Product } from "@/domain/entities";
+import { Cart, Product } from "@/domain/entities";
 import { INotificationService } from "../interfaces/INotificationService";
 import { ICartStorageService } from "../interfaces/ICartStorageService";
 
@@ -13,14 +13,11 @@ export class AddToCartCase {
             return this.notificationService.notify("Select a product");
         }
 
-        const cart = this.cartStorage.get();
-        if (!cart) {
-            return this.notificationService.notify("Cart is not available");
-        }
+        const cart = this.cartStorage.get() ?? new Cart();
 
         cart.products.push(product);
 
+        this.notificationService.notify(`${product.name} added to cart`);
         this.cartStorage.save(cart);
-        this.notificationService.notify(`Product ${product.name} added to cart`);
     }
 }
