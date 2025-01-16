@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
-import * as CONSTANTS from '../../constants'
 import styles from './style.module.css'
 import { Product } from '@domain/entities'
-import { fakeAPI } from '@infrastructure/api'
+import { ProductRepository } from '@/infrastructure/repositories/product'
+import { GetAllProductCase } from '@/domain/useCases/product'
+
+const productRepository = new ProductRepository();
+const getAllProductCase = new GetAllProductCase(productRepository);
 
 export function ProductList() {
   const [products,setProducts] = useState<Product[]>([])
   
   useEffect(()=>{
-    fakeAPI(CONSTANTS.products).then(setProducts); 
+    getAllProductCase.execute().then(setProducts); 
   },[])
   
   return (
