@@ -1,6 +1,6 @@
-import { IAuthService } from "@/domain/interfaces/IAuthService";
-import { INotificationService } from "../interfaces/INotificationService";
-import { IUserStorageService } from "../interfaces/IUserStorageService";
+import { IAuthService } from "@/application/ports/IAuthService";
+import { INotificationService } from "../ports/INotificationService";
+import { IUserStorageService } from "../ports/IUserStorageService";
 
 export class AuthCase{
     constructor(

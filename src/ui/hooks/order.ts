@@ -1,9 +1,9 @@
-import { OrderCase } from "@/domain/useCases/order";
-import { CartStorageService } from "@/infrastructure/services/CartStorage";
-import { NotificationService } from "@/infrastructure/services/Notification";
-import { OrderStorageService } from "@/infrastructure/services/OrderStorage";
-import { PaymentService } from "@/infrastructure/services/Payment";
+import { CartStorageService } from "@/application/services/cart";
+import { NotificationService } from "@/infrastructure/services/notification";
+import { OrderStorageService } from "@/application/services/order";
+import { PaymentService } from "@/infrastructure/services/payment";
 import { useCartStore, useOrderStore } from "@/ui/stores"
+import { OrderCase } from "@/application/useCases/order";
 
 const notificationService = new NotificationService();
 const paymentService = new PaymentService();

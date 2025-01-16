@@ -1,6 +1,6 @@
 import { Cart, Product } from "@/domain/entities";
-import { INotificationService } from "../interfaces/INotificationService";
-import { ICartStorageService } from "../interfaces/ICartStorageService";
+import { INotificationService } from "../ports/INotificationService";
+import { ICartStorageService } from "../ports/ICartStorageService";
 
 export class AddToCartCase {
     constructor(

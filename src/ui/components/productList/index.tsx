@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import styles from './style.module.css'
 import { Product } from '@domain/entities'
 import { ProductRepository } from '@/infrastructure/repositories/product'
-import { GetAllProductCase } from '@/domain/useCases/product'
 import { useCart } from '@/ui/hooks/cart'
 import { useUser } from '@/ui/hooks/user'
+import { GetAllProductCase } from '@/application/useCases/product'
 
 const productRepository = new ProductRepository();
 const getAllProductCase = new GetAllProductCase(productRepository);

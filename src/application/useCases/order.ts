@@ -1,8 +1,8 @@
 import { Cart, Order, User } from "@/domain/entities";
-import { IPaymentService } from "../interfaces/IPaymentService";
-import { INotificationService } from "../interfaces/INotificationService";
-import { ICartStorageService } from "../interfaces/ICartStorageService";
-import { IOrderStorageService } from "../interfaces/IOrderStorageService";
+import { IPaymentService } from "../ports/IPaymentService";
+import { INotificationService } from "../ports/INotificationService";
+import { ICartStorageService } from "../ports/ICartStorageService";
+import { IOrderStorageService } from "../ports/IOrderStorageService";
 
 export class OrderCase{
     constructor(

@@ -1,6 +1,6 @@
 import { Order } from "@/domain/entities";
-import { IStore } from "@/domain/interfaces/IStore";
-import { IOrderStorageService } from "@/domain/interfaces/IOrderStorageService";
+import { IStore } from "@/application/ports/IStore";
+import { IOrderStorageService } from "@/application/ports/IOrderStorageService";
 
 export class OrderStorageService implements IOrderStorageService{
 

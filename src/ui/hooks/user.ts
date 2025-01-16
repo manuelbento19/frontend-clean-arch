@@ -1,8 +1,8 @@
-import { AuthCase } from "@/domain/useCases/auth";
-import { AuthService } from "@/infrastructure/services/Auth";
-import { NotificationService } from "@/infrastructure/services/Notification";
-import { UserStorageService } from "@/infrastructure/services/UserStorage";
+import { AuthService } from "@/infrastructure/services/auth";
+import { NotificationService } from "@/infrastructure/services/notification";
+import { UserStorageService } from "@/application/services/user";
 import { useUserStore } from "@/ui/stores"
+import { AuthCase } from "@/application/useCases/auth";
 const authService = new AuthService();
 const notificationService = new NotificationService();
 

@@ -1,6 +1,6 @@
 import { Cart } from "@/domain/entities";
-import { ICartStorageService } from "@domain/interfaces/ICartStorageService";
-import { IStore } from "@/domain/interfaces/IStore";
+import { ICartStorageService } from "@/application/ports/ICartStorageService";
+import { IStore } from "@/application/ports/IStore";
 
 export class CartStorageService implements ICartStorageService{
 

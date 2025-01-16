@@ -1,6 +1,6 @@
 import { User } from "@/domain/entities";
-import { IUserStorageService } from "@domain/interfaces/IUserStorageService";
-import { IStore } from "@/domain/interfaces/IStore";
+import { IUserStorageService } from "@/application/ports/IUserStorageService";
+import { IStore } from "@/application/ports/IStore";
 
 export class UserStorageService implements IUserStorageService{
 

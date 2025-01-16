@@ -1,8 +1,8 @@
 import { Product } from "@/domain/entities";
-import { AddToCartCase } from "@/domain/useCases/cart";
-import { CartStorageService } from "@/infrastructure/services/CartStorage";
-import { NotificationService } from "@/infrastructure/services/Notification";
+import { CartStorageService } from "@/application/services/cart";
+import { NotificationService } from "@/infrastructure/services/notification";
 import { useCartStore } from "@/ui/stores"
+import { AddToCartCase } from "@/application/useCases/cart";
 
 const notificationService = new NotificationService();
 

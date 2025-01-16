@@ -1,5 +1,5 @@
 import { User } from "@/domain/entities";
-import { IAuthService } from "@/domain/interfaces/IAuthService";
+import { IAuthService } from "@/application/ports/IAuthService";
 import { fakeAPI } from "../api";
 
 export class AuthService implements IAuthService{
