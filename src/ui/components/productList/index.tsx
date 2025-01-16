@@ -1,7 +1,16 @@
-import { products } from '../../constants'
+import { useEffect, useState } from 'react'
+import * as CONSTANTS from '../../constants'
 import styles from './style.module.css'
+import { Product } from '@domain/entities'
+import { fakeAPI } from '@infrastructure/api'
 
 export function ProductList() {
+  const [products,setProducts] = useState<Product[]>([])
+  
+  useEffect(()=>{
+    fakeAPI(CONSTANTS.products).then(setProducts); 
+  },[])
+  
   return (
     <section className={styles.products}>
       {products.map(item=>(

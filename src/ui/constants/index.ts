@@ -1,4 +1,4 @@
-import { Product } from "@/domain/entities"
+import { Product } from "@domain/entities"
 
 export const products: Product[] = Array.from({length: 18}).map((_,index)=>{
     const id = String(index + 1);
